@@ -1,0 +1,9 @@
+#Filtered out each sets of data according to account classes and combined all of outpatient data to make "Outpatient.Data"
+#Intially thought observation was inpatient, but it was outpatient so "Inpatient.Data" only contains inpatients
+data <- Overlake.Clean
+Inpatient.Data <- filter(data, Overlake.Clean$`Account Class` == "Inpatient [101]")
+Emergency <- filter(data, Overlake.Clean$`Account Class` == "Emergency [103]")
+Observation <- filter(data, Overlake.Clean$`Account Class` == "Observation [104]")
+Outpatient <- filter(data, Overlake.Clean$`Account Class` == "Outpatient [102]")                      
+OutpatientSurgery <- filter(data, Overlake.Clean$`Account Class` == "SDC/23 Hour Outpatient Surgery [123]")
+Outpatient.Data <- rbind(Observation, Outpatient, OutpatientSurgery, Emergency)
