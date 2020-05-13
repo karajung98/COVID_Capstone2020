@@ -1,0 +1,6 @@
+install.packages("lubridate")
+library(lubridate)
+#changing 'day' to today's date
+day <- "05/12/2020"
+Inpatient.Data$`Discharge Date` <- as.Date(Inpatient.Data$`Discharge Date`)
+Inpatient.Data$`Discharge Date`[is.na(Inpatient.Data$`Discharge Date`)] <- day
