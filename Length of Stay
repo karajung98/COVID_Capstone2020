@@ -1,0 +1,6 @@
+#This is for calculating length of stay and creating a column for the values returned
+
+survey <- data.frame(date=c(Inpatient.Data$`Discharge Date`),tx_start=c(Inpatient.Data$`Admsn Date`))
+survey$date_diff <- as.Date(as.character(survey$date), format="%m/%d/%y")- as.Date(as.character(survey$tx_start), format="%m/%d/%y")
+survey
+Inpatient.Data <- mutate(Inpatient.Data, Length_Stay = survey$date_diff)
